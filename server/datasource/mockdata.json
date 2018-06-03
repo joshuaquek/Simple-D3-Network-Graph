@@ -1,9 +1,9 @@
 {
   "nodes":[
-		{"name":"node1","group":1},
-		{"name":"node2","group":2},
-		{"name":"node3","group":2},
-		{"name":"node4","group":3}
+		{"name":"SMRT", "risk":0.50, "image": "https://smrt.com.sg/Portals/0/EasyGalleryImages/1/1/SMRT58315_SMRT%20Logo_R1_FA01.png"},
+		{"name":"Enron", "risk":0.75, "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Logo_de_Enron.svg/1200px-Logo_de_Enron.svg.png"},
+		{"name":"KPMG", "risk":0.30, "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/KPMG.svg/1200px-KPMG.svg.png"},
+		{"name":"Deloitte", "risk":0.30, "image":"https://cdn.businessnews.com.au/styles/wabn_kb_company_logo/public/Deloitte.png?itok=C8PzFIVr"}
 	],
 	"links":[
 		{"source":2,"target":1,"weight":1},

@@ -1,11 +1,12 @@
-var width = 960, height = 500
+var width = 1000,
+  height = 800
 
 var svg = d3.select("body").append("svg").attr("width", width).attr("height", height); // Define area on screen to initialize the visualisation
 
-var force = d3.layout.force().gravity(.01).distance(100).charge(-100).size([width, height]); // Network gravity between nodes
+var force = d3.layout.force().gravity(.01).distance(200).charge(-100).size([width, height]); // Network gravity between nodes
 
 d3.json("/data", function (json) {
-  
+
   // ------------ THE CODE BELOW IS THE DEFAULT LOGIC FOR NETWORK GRAPHS. DO NOT EDIT. ------------
 
   force.nodes(json.nodes).links(json.links).start(); // Initialize Network Graph
@@ -15,7 +16,7 @@ d3.json("/data", function (json) {
     .enter().append("line")
     .attr("class", "link")
     .style("stroke-width", function (d) {
-      return Math.sqrt(d.weight);
+      return Math.sqrt(d.weight); // DETERMINES THE WEIGHT OF THE LINK
     });
 
   var node = svg.selectAll(".node")
@@ -46,14 +47,38 @@ d3.json("/data", function (json) {
   // -------------------- THE CODE BELOW CAN BE EDITED --------------------
 
   node.append("circle") // Make a node a circle. Use D3 Documentation to find out what other stuff (shapes, text, etc) you can append.
-    .attr("r", "5");
+    .attr("r", function (d) {
+      return d.risk * 60 // SET THE SIZE OF THE NODE
+    })
+    .attr("fill", function (d) {
+      if (d.risk > 0 && d.risk <= 0.333) return "#04844B"
+      if (d.risk > 0.333 && d.risk <= 0.666) return "#febc11"
+      if (d.risk > 0.666 && d.risk <= 1.00) return "#dc3545"
+    })
 
-  node.append("text") // Add text to node. Use D3 Documentation to find out what other stuff (shapes, text, etc) you can append.
-    .attr("dx", 12)
+  node.append("image")
+    .attr("xlink:href", function (d) {
+      return d.image
+    })
+    .attr("x", "-5px")
+    .attr("y", "-60px")
+    .attr("width", "100px")
+    .attr("height", "30px");
+
+
+  // node.append("text") 
+  //   .attr("dx", 40)
+  //   .attr("dy", ".35em")
+  //   .text(function (d) {
+  //     return d.name
+  //   });
+
+  node.append("text")
+    .attr("dx", -10)
     .attr("dy", ".35em")
     .text(function (d) {
-      return d.name
-    });
+      return d.risk * 100 + "%";
+    })
 
 
 });

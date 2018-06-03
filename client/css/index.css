@@ -1,14 +1,18 @@
+svg{
+  /* background-color: #00396B; */
+}
+
 .link {
   stroke: #aaa;
 }
 
 .node text {
-stroke:#333;
-cursos:pointer;
+stroke:#00396B;;
+cursor:pointer;
 }
 
 .node circle{
-stroke:#fff;
-stroke-width:3px;
-fill:#555;
+stroke:#00396B;
+stroke-width:1px;
+background: #fff;
 }
