@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(logger('dev')) // Log Requests
 
-app.use('/client', express.static(path.join(__dirname, 'client')));
+app.use('/', express.static(path.join(__dirname, 'client')));
 
 // ------ API ENDPOINTS ------
 app.get('/status', (req, res) => {
