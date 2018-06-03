@@ -1,0 +1,29 @@
+{
+  "name": "simple-d3-poc",
+  "version": "1.0.0",
+  "description": "simple-d3-poc",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuaquek/Simple-D3-Network-Graph.git"
+  },
+  "author": "joshuaquek <“joshua.quek.fullstack@gmail.com”> (http://www.github.com/joshuaquek)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshuaquek/Simple-D3-Network-Graph/issues"
+  },
+  "homepage": "https://github.com/joshuaquek/Simple-D3-Network-Graph#readme",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  }
+}
