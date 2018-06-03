@@ -7,12 +7,11 @@ svg{
 }
 
 .node text {
-stroke:#00396B;;
+stroke:#000;
 cursor:pointer;
 }
 
 .node circle{
-stroke:#00396B;
+stroke:#000;
 stroke-width:1px;
-background: #fff;
 }

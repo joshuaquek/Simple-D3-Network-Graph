@@ -1,9 +1,19 @@
-var width = 1000,
-  height = 800
+var width = 1000
+var height = 800
 
-var svg = d3.select("body").append("svg").attr("width", width).attr("height", height); // Define area on screen to initialize the visualisation
+var svg = d3.select("#networkgraph")
+.append("svg")
+.attr("width", width)
+.attr("height", height)
+.call(d3.behavior.zoom().on("zoom", function () {
+    svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+  }))
 
-var force = d3.layout.force().gravity(.01).distance(200).charge(-100).size([width, height]); // Network gravity between nodes
+var force = d3.layout.force()
+  .gravity(.01)
+  .distance(200)
+  .charge(-100)
+  .size([width, height])
 
 d3.json("/data", function (json) {
 
@@ -16,7 +26,7 @@ d3.json("/data", function (json) {
     .enter().append("line")
     .attr("class", "link")
     .style("stroke-width", function (d) {
-      return Math.sqrt(d.weight); // DETERMINES THE WEIGHT OF THE LINK
+      return Math.sqrt(d.weight)
     });
 
   var node = svg.selectAll(".node")
@@ -38,9 +48,8 @@ d3.json("/data", function (json) {
       .attr("y2", function (d) {
         return d.target.y;
       });
-
     node.attr("transform", function (d) {
-      return "translate(" + d.x + "," + d.y + ")";
+      return "translate(" + d.x + "," + d.y + ")"
     });
   });
 
@@ -66,6 +75,10 @@ d3.json("/data", function (json) {
     .attr("height", "30px");
 
 
+  link.style("stroke", function (d) {
+    return "#04844B"
+  })
+
   // node.append("text") 
   //   .attr("dx", 40)
   //   .attr("dy", ".35em")
@@ -77,7 +90,7 @@ d3.json("/data", function (json) {
     .attr("dx", -10)
     .attr("dy", ".35em")
     .text(function (d) {
-      return d.risk * 100 + "%";
+      return d.risk * 100 + "%"
     })
 
 
